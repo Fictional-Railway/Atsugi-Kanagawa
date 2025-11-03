@@ -66,6 +66,7 @@ body {
   width: 50%;
   border-radius: 8px;
   object-fit: contain;
+  max-height: 70px;
 }
 
 .site-title h1 {

@@ -1,64 +1,450 @@
-    :root{
-      --brand:#0b5f8a; /* ネイビーブルー */
-      --accent:#f5a623; /* アクセント */
-      --muted:#6b7280;
-      --bg:#f7fbff;
-      --card:#ffffff;
-      --radius:12px;
-      font-family: 'Noto Sans JP', Arial, Helvetica, sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:#0b1a2b;line-height:1.6}
-    header{background:linear-gradient(90deg,var(--brand),#077);color:white;padding:18px 20px;position:sticky;top:0;z-index:50}
-    .container{max-width:1100px;margin:0 auto}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:48px;width:48px;border-radius:8px;background:white;padding:6px}
-    .brand h1{font-size:18px;margin:0}
-    nav{display:flex;gap:14px;align-items:center}
-    nav a{color:white;text-decoration:none;font-weight:600}
+/* styles.css
+   基調カラー: 水色系
+   シンプルで読みやすいスタイル（レスポンシブ対応）
+*/
 
-    /* ハンバーガー（モバイル） */
-    .menu-toggle{display:none}
-    @media (max-width:900px){
-      nav{display:none}
-      .menu-toggle{display:block;background:transparent;border:1px solid rgba(255,255,255,0.18);padding:8px;border-radius:8px;color:white}
-    }
+/* ------------------------------
+   リセット（軽め）
+------------------------------ */
+* {
+  box-sizing: border-box;
+}
 
-    /* ヒーロー */
-    .hero{padding:44px 20px 28px}
-    .hero-inner{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
-    .hero h2{margin:0 0 12px;font-size:28px}
-    .hero p{margin:0;color:var(--muted)}
-    .search-card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(11,31,50,0.06)}
-    .flight-search{display:flex;gap:8px}
-    .flight-search input, .flight-search select{flex:1;padding:10px;border:1px solid #e5e7eb;border-radius:8px}
-    .btn{background:var(--accent);border:none;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #073642;
+  background: #f7fbff;
+}
 
-    /* グリッド */
-    .grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;padding:20px}
-    @media (max-width:900px){
-      .hero-inner{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-    }
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 
-    /* フライトボード */
-    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(9,20,30,0.04)}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:8px 6px;text-align:left;border-bottom:1px solid #f1f5f9}
-    th{color:var(--muted);font-weight:600}
-    .status-on-time{color:green;font-weight:700}
-    .status-delayed{color:#d97706;font-weight:700}
+/* ------------------------------
+   カラーパレット
+------------------------------ */
+:root {
+  --blue-100: #E8F9FF;
+  --blue-200: #BFEFFF;
+  --blue-300: #87D7FF;
+  --blue-400: #19AEEF;
+  --muted: #6b7a86;
+  --accent: #0aa1e6;
+  --success: #2a9d8f;
+  --danger: #e76f51;
+}
 
-    /* サイド */
-    .access-list{display:flex;flex-direction:column;gap:10px}
-    .access-item{display:flex;gap:12px;align-items:flex-start}
-    .access-item strong{display:block}
+/* ------------------------------
+   ヘッダー
+------------------------------ */
+.site-header {
+  background: linear-gradient(180deg, var(--blue-100), transparent);
+  border-bottom: 1px solid rgba(10, 161, 230, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-    footer{background:#072133;color:#cfefff;padding:20px}
-    footer .container{display:flex;align-items:center;justify-content:space-between;gap:20px}
-    footer a{color:#cfefff}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
 
-    /* 小さめのUI補助 */
-    .chip{display:inline-block;padding:6px 8px;border-radius:999px;background:#f1f8ff;color:var(--brand);font-weight:700}
-    .badge{background:#eef2ff;padding:4px 8px;border-radius:8px;font-weight:700}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  background: var(--blue-200);
+  border-radius: 8px;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.site-title h1 {
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1;
+}
+
+.site-title .sub {
+  font-size: 0.9rem;
+  display: block;
+  color: var(--muted);
+}
+
+.tagline {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ------------------------------
+   ナビゲーション
+------------------------------ */
+.main-nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 0.2rem;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  display: block;
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  top: 8px;
+}
+
+/* ------------------------------
+   ヒーロー
+------------------------------ */
+.hero {
+  background: linear-gradient(135deg, var(--blue-100), #ffffff);
+  padding: 2rem 0;
+}
+
+.hero-inner {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.hero-text h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.6rem;
+  color:black
+}
+
+.hero-text p {
+  margin: 0 0 1rem 0;
+  color:black;
+}
+
+.hero-actions .btn {
+  margin-right: 0.6rem;
+}
+
+/* ------------------------------
+   ボタン
+------------------------------ */
+.btn {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.btn.primary {
+  background: linear-gradient(180deg, var(--blue-300), var(--blue-400));
+  color: white;
+  box-shadow: 0 6px 18px rgba(10, 161, 230, 0.12);
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(10, 161, 230, 0.12);
+  color: var(--accent);
+}
+
+/* ------------------------------
+   ヒーローメタデータ
+------------------------------ */
+.hero-meta {
+  min-width: 180px;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--blue-100);
+  box-shadow: 0 4px 10px rgba(10, 161, 230, 0.04);
+}
+
+.clock {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--blue-400);
+}
+
+.weather-placeholder {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ------------------------------
+   フライト情報
+------------------------------ */
+.flights {
+  padding: 1.2rem 0;
+}
+
+.flight-controls {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.flight-controls input[type="search"] {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #dbeef8;
+  min-width: 220px;
+  background: white;
+}
+
+.flight-controls select {
+  padding: 0.45rem;
+  border-radius: 8px;
+}
+
+/* ------------------------------
+   テーブル
+------------------------------ */
+.table-wrap {
+  overflow: auto;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 6px 20px rgba(18, 52, 78, 0.03);
+}
+
+.flight-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.flight-table th,
+.flight-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #f1f6fb;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.flight-table thead th {
+  background: linear-gradient(90deg, #ffffff, #ffffff);
+  position: sticky;
+  top: 0;
+}
+
+.status.ontime {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.status.delayed {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.status.boarding {
+  color: #e9a200;
+  font-weight: 700;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+}
+
+/* ------------------------------
+   アクセス・施設
+------------------------------ */
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.services-list li {
+  background: var(--blue-100);
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  min-width: 140px;
+}
+
+/* ------------------------------
+   フォーム
+------------------------------ */
+.contact-form {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 520px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #e6f6ff;
+  background: white;
+}
+
+.form-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ------------------------------
+   フッター
+------------------------------ */
+.site-footer {
+  border-top: 1px solid rgba(10, 161, 230, 0.06);
+  background: #ffffff;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* ------------------------------
+   アクセシビリティ用
+------------------------------ */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* ------------------------------
+   レスポンシブ
+------------------------------ */
+@media (max-width: 900px) {
+  .main-nav {
+    display: none;
+    position: absolute;
+    right: 1rem;
+    top: 64px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(3, 20, 40, 0.08);
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    padding: 0.6rem;
+  }
+
+  .nav-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .hero-inner {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .table-wrap {
+    min-width: unset;
+  }
+}
+
+/* ------------------------------
+   天気セクションの背景画像
+------------------------------ */
+.weather-section {
+  background-image: url("./img/IMG_0976.JPG"); /* 自分の写真 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 80px 20px;
+  margin-left: 5px;
+
+  border-radius: 12px;
+  max-height: 1000px;
+  position: relative; /* ::beforeレイヤー用 */
+  
+}
+
+/* 半透明レイヤー（文字が見やすくなる） */
+.weather-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  z-index: 0;
+}
+
+.weather-section > * {
+  position: relative;
+  z-index: 1;
+}

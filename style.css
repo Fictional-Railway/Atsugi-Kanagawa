@@ -55,6 +55,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  background-color: #ffffff;
 }
 
 .brand {
@@ -70,6 +71,7 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  background-color: #ffffff;
 }
 
 .main-nav a {
@@ -342,21 +344,22 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
   margin-top: 0.6rem;
+  border: #1e50a2 1px solid;
+  border-radius: 5px;
+  margin-right: -20px;
 }
 
 .access-grid h3{
     background-color: #ffffff;
     width: fit-content;
     padding: 5px 10px;
-    border: #1e50a2 1px solid;
     border-radius: 5px;
+    margin-left: 10px;
 }
 
 .access-grid p {
-    border: #1e50a2 1px solid;
     padding: 10px;
     border-radius: 8px;
-    background-color: #ffffff;
 }
 
 .services-list {
@@ -579,4 +582,34 @@ body {
 
 .a-kaku:hover {
     text-decoration: underline;
+}
+
+.access-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(18, 52, 78, 0.03);
+    margin: 20px;
+}
+
+.h1h2p h1 {
+    color: #003366;
+    text-align: center;
+}
+
+.h1h2p h2 {
+    color: #1e50a2;
+    font-size: medium;
+}
+
+.h1h2p p {
+    color: #4f565b;
+}
+
+.h1h2p ul {
+    color: #4f565b;
+}
+
+.h1h2p li {
+    margin-bottom: 8px;
 }

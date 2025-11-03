@@ -17,20 +17,22 @@ document.addEventListener('DOMContentLoaded', () => {
   updateClock();
   setInterval(updateClock, 1000);
 
-  // ナビゲーション（ハンバーガー）
-  const navToggle = document.getElementById('navToggle');
-  const mainNav = document.getElementById('mainNav');
-  navToggle.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!expanded));
-    if (!expanded) {
-      mainNav.style.display = 'block';
-      navToggle.setAttribute('aria-label','メニューを閉じる');
-    } else {
-      mainNav.style.display = '';
-      navToggle.setAttribute('aria-label','メニューを開く');
-    }
-  });
+// ナビゲーション（ハンバーガー）
+const navToggle = document.getElementById('navToggle');
+const mainNav = document.getElementById('mainNav');
+
+navToggle.addEventListener('click', () => {
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', String(!expanded));
+
+  mainNav.classList.toggle('active'); // ← displayじゃなくてクラス切り替え！
+
+  navToggle.setAttribute(
+    'aria-label',
+    expanded ? 'メニューを開く' : 'メニューを閉じる'
+  );
+});
+
 
   // フライト検索とフィルター
   const flightsBody = document.getElementById('flightsBody');
@@ -124,3 +126,4 @@ document.addEventListener('DOMContentLoaded', () => {
   else if (period === 'evening') title.textContent = '現在のフライト情報';
   else title.textContent = '現在のフライト情報';
 });
+

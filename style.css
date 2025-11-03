@@ -39,12 +39,12 @@ body {
   --danger: #e76f51;
 }
 
-/* ------------------------------
+/* ==============================
    ヘッダー
------------------------------- */
+============================== */
 .site-header {
   background-color: #ffffff;
-  border-bottom: 1px solid rgba(10, 161, 230, 0.08);
+  padding: 0px 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -63,37 +63,10 @@ body {
   gap: 0.8rem;
 }
 
-.logo {
-  width: 50%;
-  border-radius: 8px;
-  object-fit: contain;
-  max-height: 70px;
-}
-
-.site-title h1 {
-  font-size: 1.1rem;
-  margin: 0;
-  line-height: 1;
-}
-
-.site-title .sub {
-  font-size: 0.9rem;
-  display: block;
-  color: var(--muted);
-}
-
-.tagline {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-/* ------------------------------
-   ナビゲーション
------------------------------- */
+/* ---- ナビゲーション ---- */
 .main-nav ul {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -102,23 +75,33 @@ body {
 .main-nav a {
   text-decoration: none;
   color: var(--accent);
-  font-weight:normal;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
+.main-nav a:hover {
+  color: var(--blue-400);
+}
+
+/* ---- ハンバーガー ---- */
 .nav-toggle {
   display: none;
   background: none;
   border: 0;
-  padding: 0.2rem;
   cursor: pointer;
+  z-index: 200;
 }
 
-.hamburger {
+.hamburger,
+.hamburger::before,
+.hamburger::after {
   width: 28px;
   height: 2px;
   background: var(--accent);
   display: block;
   position: relative;
+  transition: all 0.3s ease;
 }
 
 .hamburger::before,
@@ -126,19 +109,74 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--accent);
 }
 
-.hamburger::before {
-  top: -8px;
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+.nav-toggle.active .hamburger {
+  background: transparent;
+}
+.nav-toggle.active .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+.nav-toggle.active .hamburger::after {
+  transform: rotate(-45deg);
+  top: 0;
 }
 
-.hamburger::after {
-  top: 8px;
+/* ---- スマホ時のメニュー（スライドダウン） ---- */
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--blue-200);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.35s ease;
+    z-index: 150;
+  }
+
+  .main-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
 }
 
+/* ---- PCでは常に横並び ---- */
+@media (min-width: 901px) {
+  .main-nav {
+    position: static;
+    transform: none;
+    opacity: 1;
+    background: none;
+    border: none;
+  }
+
+  .main-nav ul {
+    flex-direction: row;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
 /* ------------------------------
    ヒーロー
 ------------------------------ */
@@ -306,6 +344,21 @@ body {
   margin-top: 0.6rem;
 }
 
+.access-grid h3{
+    background-color: #ffffff;
+    width: fit-content;
+    padding: 5px 10px;
+    border: #1e50a2 1px solid;
+    border-radius: 5px;
+}
+
+.access-grid p {
+    border: #1e50a2 1px solid;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
 .services-list {
   list-style: none;
   padding: 0;
@@ -366,7 +419,6 @@ body {
 .site-footer a {
   color: var(--muted);
   text-decoration: none;
-  color: rgb(0, 0, 0);
 }
 
 /* ------------------------------
@@ -385,15 +437,33 @@ body {
    レスポンシブ
 ------------------------------ */
 @media (max-width: 900px) {
-  .main-nav {
-    display: none;
-    position: absolute;
-    right: 1rem;
-    top: 64px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(3, 20, 40, 0.08);
-  }
+/* ハンバーガーメニュー：初期状態は非表示 */
+.main-nav {
+  position: absolute;
+  right: 1rem;
+  top: 64px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(3, 20, 40, 0.08);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s ease; /* ←ふわっとアニメーション */
+}
+
+/* 表示時 */
+.main-nav.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 中のリスト */
+.main-nav ul {
+  flex-direction: column;
+  padding: 0.6rem 1rem;
+  margin: 0;
+}
 
   .main-nav ul {
     flex-direction: column;
@@ -491,4 +561,22 @@ body {
   background-color: #b0e0ff;
   color: #003366;
   font-weight: bold;
+}
+
+
+.logo {
+  max-height: 50px;
+  border-radius: 8px;
+  object-fit: contain;
+  margin: 0px;
+  padding: 0px;
+}
+
+.a-kaku {
+    display: block;
+    text-align: center;
+}
+
+.a-kaku:hover {
+    text-decoration: underline;
 }

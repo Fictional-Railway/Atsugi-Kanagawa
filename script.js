@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('このフォームはデモです。実際の送信処理は実装されていません。');
+    alert('送信しました。ご意見ありがとうございます！ (これはデモです)');
     contactForm.reset();
   });
 

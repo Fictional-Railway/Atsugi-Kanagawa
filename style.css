@@ -203,20 +203,20 @@ body {
   min-width: 180px;
   text-align: center;
   padding: 1rem;
+  background-color: transparent;
   border-radius: 10px;
-  background: var(--blue-100);
   box-shadow: 0 4px 10px rgba(10, 161, 230, 0.04);
 }
 
 .clock {
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--blue-400);
+  color:#ffffff;
 }
 
 .weather-placeholder {
   margin-top: 0.6rem;
-  color: var(--muted);
+  color:#ffffff;
   font-size: 0.9rem;
 }
 

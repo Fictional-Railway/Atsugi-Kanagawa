@@ -3,18 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>神奈川空港旅客ターミナル|アクセス</title>
+  <title>神奈川空港旅客ターミナル|トップページ</title>
   <meta name="description" content="厚木国際空港（神奈川空港）の公式風ページ — フライト情報、アクセス、施設案内。" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<style>
-    
-</style>
 <body>
 <header class="site-header">
   <div class="container header-inner">
     <div class="brand">
-      <img src="./img/ロゴ3.png" alt="" class="logo" />
+        <a href="./index.html">
+      <img src="./img/ロゴ3.png" alt="" class="logo" /></a>
       <div class="site-title">
       </div>
     </div>
@@ -23,7 +21,7 @@
     <nav id="mainNav" class="main-nav" aria-label="主要ナビゲーション">
       <ul>
         <li><a href="#flights">フライト情報</a></li>
-        <li><a href="#access">アクセス</a></li>
+        <li><a href="./access.html">アクセス</a></li>
         <li><a href="#services">施設案内</a></li>
         <li><a href="#contact">お問い合わせ</a></li>
       </ul>
@@ -36,13 +34,28 @@
 </header>
 
   <main>
+    <section class="hero">
+
+      <div class="weather-section">
+        <div class="hero-meta" aria-hidden="false">
+            <h2>
+                Kanagawa Airport Terminal
+            </h2>
+          <div class="clock" id="localClock">--:--:--</div>
+          <div class="weather-placeholder">
+            <strong>天気:</strong> 晴れのち曇り<br />
+            <strong>気温:</strong> 20°C<br />
+          </div>
+          </div>
+        </div>
+      </div> 
   <section class="access-container">
     <div class="container">
       <div class="h1h2p">
         <h1>アクセス</h1>
 
         <h2>所在地</h2>
-        <p>〒252-1105 神奈川県綾瀬市</p>
+        <p>〒252-1105 〒252-1105 神奈川県綾瀬市蓼川</p>
 
         <h2>公共交通機関でのアクセス</h2>
         <ul>
@@ -55,28 +68,23 @@
           <li><strong>東名高速道路:</strong> 厚木ICから約20分、綾瀬スマートICから約10分。</li>
           <li><strong>駐車場:</strong> ターミナル地下に500台収容可能な有料駐車場があります。</li>
         </ul>
-
-        <h2>地図</h2>
-        <div class="map-container">
-      <div class="map-container">
-        <iframe
-          src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9326.965064881415!2d139.4451973296774!3d35.45357146306531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601855d919bb04a3%3A0x42814fe769cc26af!2sAtsugi%20Pax%20Terminal!5e1!3m2!1sja!2sjp!4v1762180749030!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
-          width="100%" height="350" style="border:0;"
-          allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- フッター -->
+  </main>
+
   <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 神奈川空港. All Rights Reserved.</p>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> 厚木国際空港株式会社 | Atsugi Int'l Airport Co., Ltd. All rights reserved.</p>
+      <p>Design Support:𝙺𝚒𝚌𝚑𝚒𝚢𝚊</p>
+      <nav aria-label="フッターナビ">
+    </div>
+      </nav>
+      <a class="a-kaku" style="color: rgb(48, 145, 255);" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a>
     </div>
   </footer>
+
+  <script src="./script.js" defer></script>
 </body>
 </html>
-    </main>

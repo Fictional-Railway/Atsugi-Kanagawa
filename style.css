@@ -43,7 +43,7 @@ body {
    ヘッダー
 ------------------------------ */
 .site-header {
-  background: linear-gradient(180deg, var(--blue-100), transparent);
+  background-color: #ffffff;
   border-bottom: 1px solid rgba(10, 161, 230, 0.08);
   position: sticky;
   top: 0;

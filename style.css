@@ -63,12 +63,9 @@ body {
 }
 
 .logo {
-  width: 56px;
-  height: 56px;
-  background: var(--blue-200);
+  width: 50%;
   border-radius: 8px;
   object-fit: contain;
-  padding: 8px;
 }
 
 .site-title h1 {
@@ -159,12 +156,12 @@ body {
 .hero-text h2 {
   margin: 0 0 0.5rem 0;
   font-size: 1.6rem;
-  color:black
+  color:#073642
 }
 
 .hero-text p {
   margin: 0 0 1rem 0;
-  color:black;
+  color:#073642;
 }
 
 .hero-actions .btn {

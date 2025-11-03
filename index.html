@@ -74,64 +74,22 @@
         <li>観光案内所</li>
       </ul>
 
-    <section id="flights" class="flights container" aria-labelledby="flightsTitle">
-      <h2 id="flightsTitle">フライト情報</h2>
-
-      <div class="flight-controls">
-        <label for="flightSearch" class="visually-hidden">フライト検索</label>
-        <input id="flightSearch" type="search" placeholder="便名・行き先で検索（例：ATG101、札幌）" />
-
-        <label for="filterSelect">フィルター</label>
-        <select id="filterSelect" aria-label="到着・出発でフィルター">
-          <option value="all">すべて</option>
-          <option value="arrival">到着</option>
-          <option value="departure">出発</option>
-        </select>
-      </div>
-
-      <div class="table-wrap" role="region" aria-label="フライト一覧">
-        <table class="flight-table">
-          <thead>
-            <tr>
-              <th scope="col">便名</th>
-              <th scope="col">区分</th>
-              <th scope="col">行先 / 発着</th>
-              <th scope="col">予定時刻</th>
-              <th scope="col">ステータス</th>
-              <th scope="col">ゲート</th>
-            </tr>
-          </thead>
-          <tbody id="flightsBody">
-            <!-- サンプルデータ（JSでフィルタ／検索が効きます） -->
-            <tr>
-              <td>ATG101</td>
-              <td class="type">出発</td>
-              <td>札幌（新千歳）</td>
-              <td class="time">11:30</td>
-              <td class="status ontime">定刻</td>
-              <td>A1</td>
-            </tr>
-            <tr>
-              <td>ATG202</td>
-              <td class="type">到着</td>
-              <td>福岡</td>
-              <td class="time">12:10</td>
-              <td class="status delayed">遅延</td>
-              <td>B3</td>
-            </tr>
-            <tr>
-              <td>ATG303</td>
-              <td class="type">出発</td>
-              <td>那覇</td>
-              <td class="time">13:00</td>
-              <td class="status boarding">搭乗中</td>
-              <td>A2</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note">注: このページはサンプルです。実運用ではサーバーAPIと接続して最新情報を取得してください。</p>
-    </section>
+<section class="flights container">
+  <h2>フライト情報</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>便名</th>
+        <th>行き先</th>
+        <th>出発時刻</th>
+        <th>状態</th>
+      </tr>
+    </thead>
+    <tbody id="flightsBody">
+      <!-- JSで動的に追加 -->
+    </tbody>
+  </table>
+</section>
 
     <section id="access" class="access container" aria-labelledby="accessTitle">
       <h2 id="accessTitle">アクセス</h2>
@@ -170,7 +128,7 @@
           <li><a href="#terms">利用規約</a></li>
         </ul>
       </nav>
-      <a href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a>
+      <a style="color: rgb(48, 145, 255);" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a>
     </div>
   </footer>
 

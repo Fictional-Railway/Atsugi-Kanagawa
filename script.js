@@ -65,3 +65,62 @@ document.addEventListener('DOMContentLoaded', () => {
   // - 時刻やステータスはタイムゾーンとISO 8601を正しく扱う
   // - フォームはサーバー側のバリデーションとCSRF対策が必要
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const flightsBody = document.getElementById('flightsBody');
+
+  // ▼ 各時間帯のフライトスケジュール（モックデータ）
+  const schedules = {
+    morning: [
+      { flight: "ATG101", route: "札幌（新千歳）", time: "07:30", status: "出発済" },
+      { flight: "ATG205", route: "大阪（伊丹）", time: "09:05", status: "搭乗中" },
+      { flight: "ATG304", route: "福岡", time: "09:40", status: "定刻" },
+    ],
+    noon: [
+      { flight: "ATG410", route: "鹿児島", time: "12:10", status: "定刻" },
+      { flight: "ATG512", route: "仙台", time: "13:25", status: "遅延" },
+      { flight: "ATG601", route: "那覇", time: "15:00", status: "定刻" },
+    ],
+    evening: [
+      { flight: "ATG702", route: "新千歳", time: "17:40", status: "搭乗中" },
+      { flight: "ATG806", route: "関西", time: "18:30", status: "定刻" },
+      { flight: "ATG912", route: "福岡", time: "20:05", status: "定刻" },
+    ],
+    night: [
+      { flight: "ATG1001", route: "那覇", time: "22:40", status: "準備中" },
+      { flight: "ATG1103", route: "新千歳", time: "23:10", status: "準備中" },
+    ]
+  };
+
+  // ▼ 現在時刻から時間帯を判定
+  const now = new Date();
+  const hour = now.getHours();
+  let period = '';
+
+  if (hour >= 6 && hour < 10) period = 'morning';
+  else if (hour >= 10 && hour < 16) period = 'noon';
+  else if (hour >= 16 && hour < 22) period = 'evening';
+  else period = 'night';
+
+  // ▼ 表示を更新
+  const flights = schedules[period];
+  flightsBody.innerHTML = '';
+
+  flights.forEach(f => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${f.flight}</td>
+      <td>${f.route}</td>
+      <td>${f.time}</td>
+      <td>${f.status}</td>
+    `;
+    flightsBody.appendChild(tr);
+  });
+
+  // ▼ タイトル表示
+  const title = document.querySelector('.flights h2');
+  if (period === 'morning') title.textContent = '現在のフライト情報';
+  else if (period === 'noon') title.textContent = '現在のフライト情報';
+  else if (period === 'evening') title.textContent = '現在のフライト情報';
+  else title.textContent = '現在のフライト情報';
+});

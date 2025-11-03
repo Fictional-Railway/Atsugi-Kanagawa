@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>厚木国際空港（神奈川空港） - ようこそ</title>
+    <meta name="description" content="厚木国際空港（架空）の公式サイトイメージページ。発着案内、アクセス、空港サービス、イベント情報を掲載しています。">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect rx='10' width='100%' height='100%' fill='%23ffffff'/><path d='M10 40 L30 18 L54 28' stroke='%230b5f8a' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" alt="ロゴ">
+        <div>
+          <h1>厚木国際空港（神奈川空港）</h1>
+          <div style="font-size:13px;color:rgba(255,255,255,0.9);">ようこそ — Domestic & International</div>
+        </div>
+      </div>
+
+      <nav aria-label="メインナビ">
+        <a href="#flights">発着情報</a>
+        <a href="#access">アクセス</a>
+        <a href="#services">サービス</a>
+        <a href="#info">お知らせ</a>
+      </nav>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">メニュー</button>
+    </div>
+  </header>
+
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h2>神奈川の空の玄関口 — 厚木国際空港へようこそ</h2>
+        <p>最新の発着案内、アクセス情報、空港施設のご案内。ご旅行・ビジネスともに便利な空のハブを目指します。</p>
+
+        <div style="height:18px"></div>
+
+        <div class="card">
+          <form class="flight-search" onsubmit="event.preventDefault();filterFlights();">
+            <input id="q" placeholder="フライト番号 / 行き先 / 発着地を入力">
+            <select id="filter">
+              <option value="all">すべて</option>
+              <option value="arrival">到着</option>
+              <option value="departure">出発</option>
+            </select>
+            <button class="btn">検索</button>
+          </form>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)">※ ここに実際の運航データを連携してください（APIで差し替え可能）。</div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3 style="margin-top:0">空港からのお知らせ</h3>
+          <ul style="padding-left:16px;margin:0;list-style:disc;color:var(--muted)">
+            <li>2025/10/01 — 新国際線ターミナル完成（架空日）</li>
+            <li>2025/09/10 — 無料Wi-Fiサービス拡張</li>
+            <li>2025/08/25 — 駐車場の混雑予報を公開しました</li>
+          </ul>
+          <div style="margin-top:12px;text-align:right"><a href="#info">もっと見る →</a></div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h4 style="margin:0 0 10px 0">アクセス</h4>
+          <div class="access-list">
+            <div class="access-item">
+              <div class="chip">電車</div>
+              <div><strong>厚木駅からリムジンバスで約30分</strong><div style="font-size:13px;color:var(--muted)">※ ダミー情報です</div></div>
+            </div>
+            <div class="access-item">
+              <div class="chip">車</div>
+              <div><strong>東名高速 厚木ICから約25分</strong><div style="font-size:13px;color:var(--muted)">駐車場：短時間・長期の料金案内あり</div></div>
+            </div>
+            <div class="access-item">
+              <div class="chip">シャトル</div>
+              <div><strong>海老名・横浜方面からシャトル運行（要予約）</strong></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- メインコンテンツ -->
+  <main class="container">
+    <div class="grid">
+      <!-- 左：発着情報 -->
+      <section id="flights" class="card">
+        <h3>発着情報</h3>
+        <p style="color:var(--muted);margin-top:4px;margin-bottom:8px">表示はサンプルデータです。実運用では航空会社APIやADS-B等から差し替えてください。</p>
+
+        <table aria-label="発着表">
+          <thead>
+            <tr>
+              <th>時刻</th>
+              <th>便名</th>
+              <th>行き先 / 発地</th>
+              <th>ターミナル</th>
+              <th>状況</th>
+            </tr>
+          </thead>
+          <tbody id="flights-table">
+            <!-- JSで差し替わります -->
+          </tbody>
+        </table>
+
+        <div style="margin-top:12px;text-align:right"><button class="btn" onclick="loadSample()">サンプル読み込み</button></div>
+      </section>
+
+      <!-- 右：空港サービス / お知らせ -->
+      <aside>
+        <div class="card">
+          <h4>空港サービス</h4>
+          <ul style="margin:6px 0 0 16px;color:var(--muted)">
+            <li>免税店・お土産コーナー</li>
+            <li>ラウンジ（プレミアム、ビジネス）</li>
+            <li>レンタカー / 送迎サービス</li>
+            <li>観光案内カウンター</li>
+          </ul>
+          <div style="margin-top:12px"><a href="#services">詳しく見る →</a></div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h4>空港内マップ</h4>
+          <div style="height:160px;background:linear-gradient(180deg,#eef6ff,white);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted)">MAP（画像を差し替えてください）</div>
+          <div style="margin-top:10px;text-align:right"><a href="#">フロア案内PDF</a></div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- アクセス詳細 -->
+    <section id="access" class="card" style="margin-top:18px">
+      <h3>アクセス</h3>
+      <p style="color:var(--muted)">公共交通、車、タクシー、長距離バスのご案内。マップと時刻はこちらから。</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+        <div class="card" style="padding:12px">
+          <h4>電車・バス</h4>
+          <p style="margin:6px 0;color:var(--muted)">最寄駅：厚木駅（架空） — リムジンバスで約30分、所要時間は道路状況により変動します。</p>
+        </div>
+        <div class="card" style="padding:12px">
+          <h4>車・駐車場</h4>
+          <p style="margin:6px 0;color:var(--muted)">駐車場：短時間/24時間/長期の区分。事前予約が可能です（架空機能）。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- サービス・詳細 -->
+    <section id="services" class="card" style="margin-top:18px">
+      <h3>サービス</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        <div class="card" style="padding:12px">
+          <h5>ラウンジ</h5>
+          <p style="margin:6px 0;color:var(--muted)">プレミアムラウンジ（有料）、ビジネスラウンジ、授乳室・ベビールームあり。</p>
+        </div>
+        <div class="card" style="padding:12px">
+          <h5>免税店</h5>
+          <p style="margin:6px 0;color:var(--muted)">化粧品、お土産、スナック類のショップを複数展開。</p>
+        </div>
+        <div class="card" style="padding:12px">
+          <h5>Wi‑Fi & 電源</h5>
+          <p style="margin:6px 0;color:var(--muted)">ターミナル内に無料Wi‑Fi、コンセントスポットを用意。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section id="info" class="card" style="margin-top:18px;margin-bottom:28px">
+      <h3>お問い合わせ</h3>
+      <p style="color:var(--muted)">電話：0120-000-000（代表）／ 施設に関するお問い合わせは contact@example.jp まで（架空）</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© 厚木国際空港（架空） All rights reserved.</div>
+      <div><a href="#">プライバシーポリシー</a> ・ <a href="#">サイト利用規約</a></div>
+    </div>
+  </footer>
+
+  <!-- ========== スクリプト（外部に分けたい場合は scripts.js に切り出してください） ========== -->
+  <script>
+    // サンプルの発着データ（実運用ではAPIに差し替える）
+    const sampleFlights = [
+      {time:'09:20', flight:'AK123', type:'arrival', place:'新千歳', terminal:'第1', status:'到着済み'},
+      {time:'10:05', flight:'KN456', type:'departure', place:'那覇', terminal:'国際', status:'出発準備'},
+      {time:'11:30', flight:'JI789', type:'arrival', place:'札幌', terminal:'第2', status:'遅延', badge:'Delayed'},
+      {time:'12:10', flight:'RK012', type:'departure', place:'福岡', terminal:'第1', status:'定刻'}
+    ];
+
+    function renderFlights(list){
+      const tbody = document.getElementById('flights-table');
+      tbody.innerHTML = '';
+      list.forEach(f=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${f.time}</td>
+          <td>${f.flight}</td>
+          <td>${f.place}</td>
+          <td>${f.terminal}</td>
+          <td>${statusCell(f)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    function statusCell(f){
+      if((f.status||'').toLowerCase().includes('遅')) return `<span class="status-delayed">${f.status}</span>`;
+      if((f.status||'').toLowerCase().includes('定')) return `<span class="status-on-time">${f.status}</span>`;
+      return `<span style="color:var(--muted)">${f.status}</span>`;
+    }
+
+    function loadSample(){ renderFlights(sampleFlights); }
+
+    function filterFlights(){
+      const q = document.getElementById('q').value.trim().toLowerCase();
+      const mode = document.getElementById('filter').value;
+      let list = sampleFlights.slice();
+      if(mode!=='all') list = list.filter(l=>l.type===mode);
+      if(q) list = list.filter(l=> (l.flight+ ' '+l.place + ' '+ l.time).toLowerCase().includes(q));
+      renderFlights(list);
+    }
+
+    // 初期ロード
+    document.addEventListener('DOMContentLoaded',()=>{
+      loadSample();
+      // ハンバーガーメニュー
+      const btn = document.querySelector('.menu-toggle');
+      btn.addEventListener('click',()=>{
+        const nav = document.querySelector('nav');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if(!expanded){
+          nav.style.display='flex'; nav.style.position='absolute'; nav.style.right='20px'; nav.style.top='64px'; nav.style.background='linear-gradient(180deg, rgba(11,95,138,0.98), rgba(7,119,119,0.98))'; nav.style.padding='12px'; nav.style.borderRadius='10px';
+        } else {
+          nav.style.display='none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

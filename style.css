@@ -1,0 +1,29 @@
+:root{
+.hero-inner{grid-template-columns:1fr}
+.grid{grid-template-columns:1fr}
+}
+
+
+/* フライトボード */
+.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(9,20,30,0.04)}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px 6px;text-align:left;border-bottom:1px solid #f1f5f9}
+th{color:var(--muted);font-weight:600}
+.status-on-time{color:green;font-weight:700}
+.status-delayed{color:#d97706;font-weight:700}
+
+
+/* サイド */
+.access-list{display:flex;flex-direction:column;gap:10px}
+.access-item{display:flex;gap:12px;align-items:flex-start}
+.access-item strong{display:block}
+
+
+footer{background:#072133;color:#cfefff;padding:20px}
+footer .container{display:flex;align-items:center;justify-content:space-between;gap:20px}
+footer a{color:#cfefff}
+
+
+/* 小さめのUI補助 */
+.chip{display:inline-block;padding:6px 8px;border-radius:999px;background:#f1f8ff;color:var(--brand);font-weight:700}
+.badge{background:#eef2ff;padding:4px 8px;border-radius:8px;font-weight:700}

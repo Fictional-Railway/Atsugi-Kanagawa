@@ -731,3 +731,26 @@ body {
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.269);
     transform: translateY(-2px);
 }
+
+.flight-btn3 {
+    padding: 8px 12px;
+    background-color: #1e50a2;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 1.5px #00ccff solid;
+    transition: 0.3s;
+}
+.flight-btn3 a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight:normal;
+}
+
+.flight-btn3 a:hover {
+    font-weight: 550;
+}
+
+.flight-btn3:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.269);
+    transform: translateY(-2px);
+}

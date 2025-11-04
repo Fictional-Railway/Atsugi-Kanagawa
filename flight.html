@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>神奈川空港旅客ターミナル|トップページ</title>
+  <meta name="description" content="厚木国際空港（神奈川空港）の公式風ページ — フライト情報、アクセス、施設案内。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+        <a href="./index.html">
+      <img src="./img/ロゴ3.png" alt="" class="logo" /></a>
+      <div class="site-title">
+      </div>
+    </div>
+
+    <!-- ナビゲーションとハンバーガーを右側に -->
+    <nav id="mainNav" class="main-nav" aria-label="主要ナビゲーション">
+      <ul>
+        <li><a href="#flights">フライト情報</a></li>
+        <li><a href="./access.html">アクセス</a></li>
+        <li><a href="#services">施設案内</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+
+    <button id="navToggle" class="nav-toggle" aria-controls="mainNav" aria-expanded="false" aria-label="メニューを開く">
+      <span class="hamburger"></span>
+    </button>
+  </div>
+</header>
+
+<main>
+<section class="flights container">
+    <div class="flightnav">
+  <h2>フライト情報</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>便名</th>
+        <th>行き先</th>
+        <th>出発時刻</th>
+        <th>状態</th>
+      </tr>
+    </thead>
+    <tbody id="flightsBody">
+      <!-- JSで動的に追加 -->
+    </tbody>
+  </table>
+  </div>
+</section>
+  </main>
+
+    <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> 厚木国際空港株式会社 | Atsugi Int'l Airport Co., Ltd. All rights reserved.</p>
+      <p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" >Design Support:𝙺𝚒𝚌𝚑𝚒𝚢𝚊 | sÖrAm̈a.jpg ❏</p>
+      <nav aria-label="フッターナビ">
+    </div>
+      </nav>
+      <a class="a-kaku" style="color: rgb(48, 145, 255);" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a>
+    </div>
+  </footer>
+
+  <script src="./script/script2.js" defer></script>
+</body>
+</html>

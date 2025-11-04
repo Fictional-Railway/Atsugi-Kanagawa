@@ -613,3 +613,11 @@ body {
 .h1h2p li {
     margin-bottom: 8px;
 }
+
+.flightnav tbody {
+    font-size: small;
+}
+
+.flightnav th {
+    font-size: small;
+}

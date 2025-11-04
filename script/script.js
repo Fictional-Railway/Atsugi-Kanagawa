@@ -127,3 +127,92 @@ document.addEventListener('DOMContentLoaded', () => {
   else title.textContent = '現在のフライト情報';
 });
 
+
+
+// === 現在時刻を表示 ===
+function updateClock() {
+  const now = new Date();
+  const h = now.getHours().toString().padStart(2, "0");
+  const m = now.getMinutes().toString().padStart(2, "0");
+  document.getElementById("currentTime").textContent = `${h}:${m}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// === 便スケジュール ===
+const flightSchedule = {
+  "15:00": [
+    ["KK703", "札幌(新千歳)", "15:10", "A2", "定刻"],
+    ["KK905", "ソウル(金浦)", "15:20", "B1", "定刻"],
+    ["KK421", "那覇", "15:25", "A4", "定刻"]
+  ],
+  "15:30": [
+    ["KK711", "大阪(関西)", "15:40", "A3", "搭乗中"],
+    ["KK913", "台北(桃園)", "15:45", "B3", "搭乗準備中"]
+  ],
+  "16:00": [
+    ["KK715", "名古屋(中部)", "16:10", "A1", "定刻"],
+    ["KK923", "香港", "16:20", "B2", "定刻"],
+    ["KK727", "鹿児島", "16:25", "A4", "搭乗中"]
+  ],
+  "16:30": [
+    ["KK733", "福岡", "16:40", "A2", "搭乗準備中"],
+    ["KK925", "マニラ", "16:50", "B3", "定刻"]
+  ],
+};
+
+// === 最も近い時間帯を見つける関数 ===
+function getNearestSlot() {
+  const now = new Date();
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+  const slots = Object.keys(flightSchedule);
+
+  let nearestSlot = slots[0];
+  let minDiff = Infinity;
+
+  for (const slot of slots) {
+    const [h, m] = slot.split(":").map(Number);
+    const slotMinutes = h * 60 + m;
+    const diff = Math.abs(slotMinutes - currentMinutes);
+
+    if (diff < minDiff) {
+      minDiff = diff;
+      nearestSlot = slot;
+    }
+  }
+
+  console.log("Nearest slot:", nearestSlot); // デバッグ用
+  return nearestSlot;
+}
+
+// === 表を更新 ===
+function updateFlightTable() {
+  const slot = getNearestSlot();
+  const flights = flightSchedule[slot];
+
+  const title = document.getElementById("time-slot-title");
+  const tbody = document.getElementById("flight-body");
+
+  if (!flights) {
+    title.textContent = "現在の時間帯に便情報がありません。";
+    tbody.innerHTML = "";
+    return;
+  }
+
+  title.textContent = `現在の便情報（${slot} 発）`;
+  tbody.innerHTML = "";
+
+  flights.forEach(flight => {
+    const row = document.createElement("tr");
+    flight.forEach(detail => {
+      const cell = document.createElement("td");
+      cell.textContent = detail;
+      row.appendChild(cell);
+    });
+    tbody.appendChild(row);
+  });
+}
+
+// === 初期化と定期更新 ===
+updateFlightTable();
+setInterval(updateFlightTable, 30 * 60 * 1000); // 30分ごと

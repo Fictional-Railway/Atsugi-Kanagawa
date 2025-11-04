@@ -74,30 +74,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // ▼ 各時間帯のフライトスケジュール（モックデータ）
   const schedules = {
     morning: [
-      { flight: "JF991", route: "新千歳", time: "07:30", status: "定刻" },
-      { flight: "RN205", route: "伊丹", time: "07:50", status: "定刻" },
-      { flight: "SX304", route: "福岡", time: "08:30", status: "定刻" },
-      { flight: "RN118", route: "那覇", time: "09:55", status: "定刻" },
-      { flight: "HG304", route: "熊本", time: "11:00", status: "遅延" },
+      { flight: "ATG101", route: "新千歳", time: "07:30", status: "出発済" },
+      { flight: "ATG205", route: "伊丹", time: "09:05", status: "搭乗中" },
+      { flight: "ATG304", route: "福岡", time: "09:40", status: "定刻" },
     ],
     noon: [
-      { flight: "KW1210", route: "仙台", time: "12:05", status: "定刻" },
-      { flight: "IC516", route: "仁川", time: "12:40", status: "定刻" },
-      { flight: "AS512", route: "広島", time: "13:25", status: "遅延" },
-      { flight: "SS601", route: "伊丹", time: "14:10", status: "定刻" },
-      { flight: "HG1210", route: "福岡", time: "15:45", status: "定刻" },
-      { flight: "KW251", route: "福井", time: "16:20", status: "定刻" },
+      { flight: "ATG1210", route: "仁川", time: "12:10", status: "定刻" },
+      { flight: "ATG512", route: "仙台", time: "13:25", status: "遅延" },
+      { flight: "ATG601", route: "那覇", time: "15:00", status: "定刻" },
     ],
     evening: [
-      { flight: "JF1703", route: "新千歳", time: "17:40", status: "定刻" },
-      { flight: "HG806", route: "長崎", time: "18:10", status: "定刻" },
-      { flight: "PF1361", route: "上海", time: "18:35", status: "定刻" },
-      { flight: "KW354", route: "中部", time: "19:55", status: "定刻" },
-      { flight: "AS854", route: "南紀白浜", time: "20:15", status: "定刻" },
+      { flight: "ATG1211", route: "新千歳", time: "17:40", status: "搭乗中" },
+      { flight: "ATG806", route: "関西", time: "18:30", status: "定刻" },
+      { flight: "ATG1361", route: "上海", time: "20:05", status: "定刻" },
     ],
     night: [
-      { flight: "RN1241", route: "那覇", time: "21:20", status: "遅延" },
-      { flight: "JF1103", route: "新千歳", time: "21:50", status: "定刻" },
+      { flight: "ATG1001", route: "那覇", time: "22:40", status: "準備中" },
+      { flight: "ATG1103", route: "新千歳", time: "23:10", status: "準備中" },
     ]
   };
 
@@ -133,3 +126,101 @@ document.addEventListener('DOMContentLoaded', () => {
   else if (period === 'evening') title.textContent = '現在のフライト情報';
   else title.textContent = '現在のフライト情報';
 });
+
+
+
+// === 現在時刻を表示 ===
+function updateClock() {
+  const now = new Date();
+  const h = now.getHours().toString().padStart(2, "0");
+  const m = now.getMinutes().toString().padStart(2, "0");
+  document.getElementById("currentTime").textContent = `${h}:${m}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// === 便スケジュール ===
+  const schedules = {
+    morning: [
+      { flight: "JF991", route: "新千歳", time: "07:30", status: "定刻" },
+      { flight: "RN205", route: "伊丹", time: "07:50", status: "定刻" },
+      { flight: "SX304", route: "福岡", time: "08:30", status: "定刻" },
+      { flight: "RN118", route: "那覇", time: "09:55", status: "定刻" },
+      { flight: "HG304", route: "熊本", time: "11:00", status: "遅延" },
+    ],
+    noon: [
+      { flight: "KW1210", route: "仙台", time: "12:05", status: "定刻" },
+      { flight: "IC516", route: "仁川", time: "12:40", status: "定刻" },
+      { flight: "AS512", route: "広島", time: "13:25", status: "遅延" },
+      { flight: "SS601", route: "伊丹", time: "14:10", status: "定刻" },
+      { flight: "HG1210", route: "福岡", time: "15:45", status: "定刻" },
+      { flight: "KW251", route: "福井", time: "16:20", status: "定刻" },
+    ],
+    evening: [
+      { flight: "JF1703", route: "新千歳", time: "17:40", status: "定刻" },
+      { flight: "HG806", route: "長崎", time: "18:10", status: "定刻" },
+      { flight: "PF1361", route: "上海", time: "18:35", status: "定刻" },
+      { flight: "KW354", route: "中部", time: "19:55", status: "定刻" },
+      { flight: "AS854", route: "南紀白浜", time: "20:15", status: "定刻" },
+    ],
+    night: [
+      { flight: "RN1241", route: "那覇", time: "21:20", status: "遅延" },
+      { flight: "JF1103", route: "新千歳", time: "21:50", status: "定刻" },
+    ]
+  };
+
+// === 最も近い時間帯を見つける関数 ===
+function getNearestSlot() {
+  const now = new Date();
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+  const slots = Object.keys(flightSchedule);
+
+  let nearestSlot = slots[0];
+  let minDiff = Infinity;
+
+  for (const slot of slots) {
+    const [h, m] = slot.split(":").map(Number);
+    const slotMinutes = h * 60 + m;
+    const diff = Math.abs(slotMinutes - currentMinutes);
+
+    if (diff < minDiff) {
+      minDiff = diff;
+      nearestSlot = slot;
+    }
+  }
+
+  console.log("Nearest slot:", nearestSlot); // デバッグ用
+  return nearestSlot;
+}
+
+// === 表を更新 ===
+function updateFlightTable() {
+  const slot = getNearestSlot();
+  const flights = flightSchedule[slot];
+
+  const title = document.getElementById("time-slot-title");
+  const tbody = document.getElementById("flight-body");
+
+  if (!flights) {
+    title.textContent = "現在の時間帯に便情報がありません。";
+    tbody.innerHTML = "";
+    return;
+  }
+
+  title.textContent = `現在の便情報（${slot} 発）`;
+  tbody.innerHTML = "";
+
+  flights.forEach(flight => {
+    const row = document.createElement("tr");
+    flight.forEach(detail => {
+      const cell = document.createElement("td");
+      cell.textContent = detail;
+      row.appendChild(cell);
+    });
+    tbody.appendChild(row);
+  });
+}
+
+// === 初期化と定期更新 ===
+updateFlightTable();
+setInterval(updateFlightTable, 30 * 60 * 1000); // 30分ごと

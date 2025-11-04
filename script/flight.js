@@ -74,23 +74,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // ▼ 各時間帯のフライトスケジュール（モックデータ）
   const schedules = {
     morning: [
-      { flight: "ATG101", route: "新千歳", time: "07:30", status: "出発済" },
-      { flight: "ATG205", route: "伊丹", time: "09:05", status: "搭乗中" },
-      { flight: "ATG304", route: "福岡", time: "09:40", status: "定刻" },
+      { flight: "JF991", route: "新千歳", time: "07:30", status: "定刻" },
+      { flight: "RN205", route: "伊丹", time: "07:50", status: "定刻" },
+      { flight: "SS304", route: "福岡", time: "08:30", status: "定刻" },
+      { flight: "RN118", route: "那覇", time: "09:55", status: "定刻" },
+      { flight: "HG304", route: "熊本", time: "11:00", status: "遅延" },
     ],
     noon: [
-      { flight: "ATG1210", route: "仁川", time: "12:10", status: "定刻" },
-      { flight: "ATG512", route: "仙台", time: "13:25", status: "遅延" },
-      { flight: "ATG601", route: "那覇", time: "15:00", status: "定刻" },
+      { flight: "KW1210", route: "仙台", time: "12:05", status: "定刻" },
+      { flight: "IC516", route: "仁川", time: "12:40", status: "定刻" },
+      { flight: "AS512", route: "広島", time: "13:25", status: "遅延" },
+      { flight: "SS601", route: "伊丹", time: "14:10", status: "定刻" },
+      { flight: "HG1210", route: "福岡", time: "15:45", status: "定刻" },
+      { flight: "KW251", route: "福井", time: "16:20", status: "定刻" },
     ],
     evening: [
-      { flight: "ATG1211", route: "新千歳", time: "17:40", status: "搭乗中" },
-      { flight: "ATG806", route: "関西", time: "18:30", status: "定刻" },
-      { flight: "ATG1361", route: "上海", time: "20:05", status: "定刻" },
+      { flight: "JF1703", route: "新千歳", time: "17:40", status: "定刻" },
+      { flight: "HG806", route: "長崎", time: "18:10", status: "定刻" },
+      { flight: "PF1361", route: "上海", time: "18:35", status: "定刻" },
+      { flight: "KW354", route: "中部", time: "19:55", status: "定刻" },
+      { flight: "AS854", route: "南紀白浜", time: "20:15", status: "定刻" },
     ],
     night: [
-      { flight: "ATG1001", route: "那覇", time: "22:40", status: "準備中" },
-      { flight: "ATG1103", route: "新千歳", time: "23:10", status: "準備中" },
+      { flight: "RN1241", route: "那覇", time: "21:20", status: "遅延" },
+      { flight: "JF1103", route: "新千歳", time: "21:50", status: "定刻" },
     ]
   };
 
@@ -140,34 +147,26 @@ setInterval(updateClock, 1000);
 updateClock();
 
 // === 便スケジュール ===
-  const schedules = {
-    morning: [
-      { flight: "JF991", route: "新千歳", time: "07:30", status: "定刻" },
-      { flight: "RN205", route: "伊丹", time: "07:50", status: "定刻" },
-      { flight: "SX304", route: "福岡", time: "08:30", status: "定刻" },
-      { flight: "RN118", route: "那覇", time: "09:55", status: "定刻" },
-      { flight: "HG304", route: "熊本", time: "11:00", status: "遅延" },
-    ],
-    noon: [
-      { flight: "KW1210", route: "仙台", time: "12:05", status: "定刻" },
-      { flight: "IC516", route: "仁川", time: "12:40", status: "定刻" },
-      { flight: "AS512", route: "広島", time: "13:25", status: "遅延" },
-      { flight: "SS601", route: "伊丹", time: "14:10", status: "定刻" },
-      { flight: "HG1210", route: "福岡", time: "15:45", status: "定刻" },
-      { flight: "KW251", route: "福井", time: "16:20", status: "定刻" },
-    ],
-    evening: [
-      { flight: "JF1703", route: "新千歳", time: "17:40", status: "定刻" },
-      { flight: "HG806", route: "長崎", time: "18:10", status: "定刻" },
-      { flight: "PF1361", route: "上海", time: "18:35", status: "定刻" },
-      { flight: "KW354", route: "中部", time: "19:55", status: "定刻" },
-      { flight: "AS854", route: "南紀白浜", time: "20:15", status: "定刻" },
-    ],
-    night: [
-      { flight: "RN1241", route: "那覇", time: "21:20", status: "遅延" },
-      { flight: "JF1103", route: "新千歳", time: "21:50", status: "定刻" },
-    ]
-  };
+const flightSchedule = {
+  "15:00": [
+    ["KK703", "札幌(新千歳)", "15:10", "A2", "定刻"],
+    ["KK905", "ソウル(金浦)", "15:20", "B1", "定刻"],
+    ["KK421", "那覇", "15:25", "A4", "定刻"]
+  ],
+  "15:30": [
+    ["KK711", "大阪(関西)", "15:40", "A3", "搭乗中"],
+    ["KK913", "台北(桃園)", "15:45", "B3", "搭乗準備中"]
+  ],
+  "16:00": [
+    ["KK715", "名古屋(中部)", "16:10", "A1", "定刻"],
+    ["KK923", "香港", "16:20", "B2", "定刻"],
+    ["KK727", "鹿児島", "16:25", "A4", "搭乗中"]
+  ],
+  "16:30": [
+    ["KK733", "福岡", "16:40", "A2", "搭乗準備中"],
+    ["KK925", "マニラ", "16:50", "B3", "定刻"]
+  ],
+};
 
 // === 最も近い時間帯を見つける関数 ===
 function getNearestSlot() {

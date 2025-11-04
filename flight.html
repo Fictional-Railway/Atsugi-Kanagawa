@@ -34,7 +34,22 @@
 </header>
 
 <main>
-<section class="flights container">
+    <section class="hero">
+
+      <div class="weather-section">
+        <div class="hero-meta" aria-hidden="false">
+            <h2>
+                Atsugi Kanagawa Airport Terminal
+            </h2>
+          <div class="clock" id="localClock">--:--:--</div>
+          <div class="weather-placeholder">
+            <strong>天気:</strong> 晴れのち曇り<br />
+            <strong>気温:</strong> 20°C<br />
+          </div>
+          </div>
+        </div>
+      </div> 
+<section style="margin: 20px;" class="flights container">
     <div class="flightnav">
   <h2>フライト情報</h2>
   <table>
@@ -52,6 +67,17 @@
   </table>
   </div>
 </section>
+<section style="margin: 20px;" class="noriire">
+    <h2>乗り入れている航空会社</h2>
+    <ul>
+        <li>神奈川航空</li>
+        <li>Japan Flying Network</li>
+        <li>琉球リゾート航空</li>
+        <li>肥後航空</li>
+        <li>サクラスカイ航空</li>
+        <li>エア</li>
+    </ul>
+</section>
   </main>
 
     <footer class="site-footer">
@@ -65,6 +91,6 @@
     </div>
   </footer>
 
-  <script src="./script/script2.js" defer></script>
+  <script src="./script/flight.js" defer></script>
 </body>
 </html>

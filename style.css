@@ -613,3 +613,67 @@ body {
 .flightnav th {
     font-size: x-small;
 }
+
+/* ==============================
+   天気と時刻の横並び配置（右下）
+============================== */
+.weather-section {
+  position: relative;
+  background-image: url("./img/IMG_0976.JPG");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 80px 20px;
+  height: 400px; /* 背景の高さを適度に固定（調整OK） */
+  display: flex;
+  align-items: flex-end;   /* 下寄せ */
+  justify-content: flex-end; /* 右寄せ */
+}
+
+.hero-meta {
+  position: absolute;         /* ←これを追加！ */
+  bottom: 20px;               /* 下から20pxの位置（もっと下げたければ10pxなどに） */
+  right: 25px;                /* 右から25pxの位置（もっと右なら15pxなどに） */
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  text-align: left;
+  min-width: 300px;
+}
+
+
+.hero-meta h2{
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 200;
+}
+
+.hero-meta .clock {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  font-weight: normal;
+}
+
+.weather-placeholder {
+  color: #ffffff;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+  .hero-meta {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    text-align: right;
+    padding: 0.8rem 1rem;
+  }
+}

@@ -223,9 +223,11 @@ body {
 }
 
 .btn.primary {
+  display: block;
   background-color:#1e50a2;
   color: white;
   box-shadow: 0 6px 18px rgba(10, 161, 230, 0.12);
+  width: fit-content;
 }
 
 .btn.ghost {
@@ -682,4 +684,50 @@ body {
     text-align: right;
     padding: 0.8rem 1rem;
   }
+}
+
+.flight-btn {
+    padding: 8px 12px;
+    background-color: #1e50a2;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 1.5px #00ccff solid;
+    transition: 0.3s;
+}
+.flight-btn a {
+    color: white;
+    text-decoration: none;
+    font-weight:normal;
+}
+
+.flight-btn a:hover {
+    font-weight: 550;
+}
+
+.flight-btn:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.269);
+    transform: translateY(-2px);
+}
+
+.flight-btn2 {
+    padding: 8px 12px;
+    background-color: #ffffff;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 1.5px #00ccff solid;
+    transition: 0.3s;
+}
+.flight-btn2 a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight:normal;
+}
+
+.flight-btn2 a:hover {
+    font-weight: 550;
+}
+
+.flight-btn2:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.269);
+    transform: translateY(-2px);
 }

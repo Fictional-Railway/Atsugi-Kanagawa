@@ -74,12 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ▼ 各時間帯のフライトスケジュール（モックデータ）
   const schedules = {
     morning: [
-      { flight: "ATG101", route: "札幌（新千歳）", time: "07:30", status: "出発済" },
-      { flight: "ATG205", route: "大阪（伊丹）", time: "09:05", status: "搭乗中" },
+      { flight: "ATG101", route: "新千歳", time: "07:30", status: "出発済" },
+      { flight: "ATG205", route: "伊丹", time: "09:05", status: "搭乗中" },
       { flight: "ATG304", route: "福岡", time: "09:40", status: "定刻" },
     ],
     noon: [
-      { flight: "ATG1210", route: "ソウル（仁川）", time: "12:10", status: "定刻" },
+      { flight: "ATG1210", route: "仁川", time: "12:10", status: "定刻" },
       { flight: "ATG512", route: "仙台", time: "13:25", status: "遅延" },
       { flight: "ATG601", route: "那覇", time: "15:00", status: "定刻" },
     ],

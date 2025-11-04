@@ -646,6 +646,12 @@ body {
   min-width: 300px;
 }
 
+@media (max-width: 800px) {
+  .weather-section {
+    height: 350px; /* スマホでは高さを少し低く */
+  }
+}
+
 
 .hero-meta h2{
   font-size: 1.2rem;

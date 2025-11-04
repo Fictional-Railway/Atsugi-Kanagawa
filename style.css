@@ -373,13 +373,6 @@ body {
   margin-top: 0.6rem;
 }
 
-.services-list li {
-  background: var(--blue-100);
-  padding: 0.6rem 0.8rem;
-  border-radius: 8px;
-  min-width: 140px;
-}
-
 /* ------------------------------
    フォーム
 ------------------------------ */

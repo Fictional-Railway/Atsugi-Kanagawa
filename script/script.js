@@ -74,23 +74,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // ▼ 各時間帯のフライトスケジュール（モックデータ）
   const schedules = {
     morning: [
-      { flight: "ATG101", route: "新千歳", time: "07:30", status: "出発済" },
-      { flight: "ATG205", route: "伊丹", time: "09:05", status: "搭乗中" },
-      { flight: "ATG304", route: "福岡", time: "09:40", status: "定刻" },
+      { flight: "JF991", route: "新千歳", time: "07:30", status: "出発済" },
+      { flight: "RN205", route: "伊丹", time: "09:05", status: "搭乗中" },
+      { flight: "SS304", route: "福岡", time: "09:40", status: "定刻" },
     ],
     noon: [
-      { flight: "ATG1210", route: "仁川", time: "12:10", status: "定刻" },
-      { flight: "ATG512", route: "仙台", time: "13:25", status: "遅延" },
-      { flight: "ATG601", route: "那覇", time: "15:00", status: "定刻" },
+      { flight: "IC516", route: "仁川", time: "12:10", status: "定刻" },
+      { flight: "KW1210", route: "広島", time: "13:25", status: "遅延" },
+      { flight: "KW251", route: "福井", time: "16:20", status: "定刻" },
     ],
     evening: [
-      { flight: "ATG1211", route: "新千歳", time: "17:40", status: "搭乗中" },
-      { flight: "ATG806", route: "関西", time: "18:30", status: "定刻" },
-      { flight: "ATG1361", route: "上海", time: "20:05", status: "定刻" },
+      { flight: "JF1703", route: "新千歳", time: "17:40", status: "搭乗中" },
+      { flight: "PF1361", route: "上海", time: "18:35", status: "定刻" },
+      { flight: "AS854", route: "南紀白浜", time: "20:15", status: "定刻" },
     ],
     night: [
-      { flight: "ATG1001", route: "那覇", time: "22:40", status: "準備中" },
-      { flight: "ATG1103", route: "新千歳", time: "23:10", status: "準備中" },
+      { flight: "RN1241", route: "那覇", time: "21:20", status: "準備中" },
+      { flight: "JF1103", route: "新千歳", time: "21:50", status: "準備中" },
     ]
   };
 
